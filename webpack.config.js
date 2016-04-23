@@ -5,5 +5,12 @@ module.exports = {
     filename: 'bundle.js'
   },
 
-  devtool: 'source-map'
+  devtool: 'source-map',
+
+  devServer: {
+    contentBase:        './public',
+    colors:             true,
+    historyApiFallback: true,
+    inline:             true
+  }
 };
