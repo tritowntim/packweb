@@ -5,6 +5,15 @@ module.exports = {
     filename: 'bundle.js'
   },
 
+  module: {
+    loaders: [
+      {
+        test:   /\.json$/,
+        loader: 'json'
+      }
+    ]
+  },
+
   devtool: 'source-map',
 
   devServer: {
