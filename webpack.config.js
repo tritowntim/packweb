@@ -1,9 +1,10 @@
-var webpack = require('webpack');
+var webpack           = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: __dirname + '/app/main.js',
   output: {
-    path:     __dirname + '/public',
+    path:     __dirname + '/build',
     filename: 'bundle.js'
   },
 
@@ -30,7 +31,10 @@ module.exports = {
   ],
 
   plugins: [
-    new webpack.BannerPlugin('Tritown Industries')
+    new webpack.BannerPlugin('Tritown Industries'),
+    new HtmlWebpackPlugin({
+      template: __dirname + '/app/index.tmpl.html'
+    })
   ],
 
   devtool: 'eval-source-map',
