@@ -1,11 +1,12 @@
 var webpack           = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: __dirname + '/app/main.js',
   output: {
     path:     __dirname + '/build',
-    filename: 'bundle.js'
+    filename: '[name]-[hash].js'
   },
 
   module: {
@@ -21,7 +22,7 @@ module.exports = {
       },
       {
         test:     /\.css$/,
-        loader:   'style!css?modules!postcss'
+        loader:   ExtractTextPlugin.extract('style', 'css?modules!postcss')
       }
     ]
   },
@@ -35,7 +36,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: __dirname + '/app/index.tmpl.html'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new ExtractTextPlugin('[name]-[hash].css')
   ],
 
   devtool: 'eval-source-map',
