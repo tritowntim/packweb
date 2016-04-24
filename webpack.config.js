@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: __dirname + '/app/main.js',
   output: {
@@ -25,6 +27,10 @@ module.exports = {
 
   postcss: [
     require('autoprefixer')
+  ],
+
+  plugins: [
+    new webpack.BannerPlugin('Tritown Industries')
   ],
 
   devtool: 'eval-source-map',
