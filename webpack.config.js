@@ -34,7 +34,8 @@ module.exports = {
     new webpack.BannerPlugin('Tritown Industries'),
     new HtmlWebpackPlugin({
       template: __dirname + '/app/index.tmpl.html'
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
 
   devtool: 'eval-source-map',
@@ -43,6 +44,7 @@ module.exports = {
     contentBase:        './public',
     colors:             true,
     historyApiFallback: true,
-    inline:             true
+    inline:             true,
+    hot:                true
   }
 };
